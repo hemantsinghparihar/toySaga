@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "logo_carousels",
+  "info": {
+    "singularName": "logo-carousel",
+    "pluralName": "logo-carousels",
+    "displayName": "logoCarousel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "abstractLogo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
