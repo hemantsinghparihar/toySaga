@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_models",
+  "info": {
+    "singularName": "about-model",
+    "pluralName": "about-models",
+    "displayName": "aboutModel",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "boldText": {
+      "type": "text"
+    },
+    "smallText": {
+      "type": "text"
+    },
+    "normalText": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "image2": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
