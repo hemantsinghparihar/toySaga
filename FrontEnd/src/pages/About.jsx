@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
-import aboutService from "../services/aboutService";
+import services from "../services/services";
 import PageTop from "../components/ui/PageTop";
 import AboutCards from "../components/ui/AboutCards";
+import constants from "../utils/constants";
 
 // import mission from "./assets/images/mission.png";
 // import vission from "./assets/images/Vision.png";
@@ -34,7 +35,7 @@ function About() {
   }, []);
 
   useEffect(() => {
-    aboutService.getAboutSec().then((res) => {
+    services.getAboutSec().then((res) => {
       setAboutData(res);
     });
   }, []);
@@ -55,8 +56,17 @@ function About() {
               <div className="creativePartnersImgWrapper">
                 <div className="creativePartnersImgGrid">
                   {/* <img src={johnDoe} alt=""/> */}
-                  <img
+                  {/* <img
                     src={`http://localhost:1337${
+                      aboutData.data
+                        ? aboutData.data[1].attributes.image2.data.attributes
+                            .url
+                        : "vision image"
+                    }`}
+                    alt=""
+                  /> */}
+                   <img
+                    src={`${constants.imageURLConstent}${
                       aboutData.data
                         ? aboutData.data[1].attributes.image2.data.attributes
                             .url
@@ -72,7 +82,7 @@ function About() {
                 <div className="creativePartnersImgGrid">
                   {/* <img src={samWilliamsons} alt=""/> */}
                   <img
-                    src={`http://localhost:1337${
+                    src={`${constants.imageURLConstent}${
                       aboutData.data
                         ? aboutData.data[1].attributes.image.data.attributes.url
                         : "vision image"

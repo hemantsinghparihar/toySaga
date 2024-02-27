@@ -1,5 +1,6 @@
 import React from "react";
 import '../../App.css'
+import constants from "../../utils/constants";
 
 function SingleProduct(props) {
   const products = props.products;
@@ -13,7 +14,7 @@ function SingleProduct(props) {
           <div className="prod-Img-Box">
             {/* <img src={prodThree} alt=""/> */}
             <img
-              src={`http://localhost:1337${
+              src={`${constants.imageURLConstent}${
                 products.data
                   ? prod.attributes.productImage.data[0].attributes
                       .url

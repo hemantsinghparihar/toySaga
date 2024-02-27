@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import useEmblaCarousel from "embla-carousel-react";
-import testimonial from "../../services/testimonialService";
+//import testimonial from "../../services/testimonialService";
 //import banner from "./assets/images/banner.png";
 import quate from "../../assets/images/quate.png";
+import constants from "../../utils/constants";
+import services from "../../services/services";
 
 const Testimonial = () => {
   const [testimonialContent, setTestimonial] = useState({});
@@ -16,7 +18,7 @@ const Testimonial = () => {
     }
   }, [emblaApi]);
   useEffect(() => {
-    testimonial.getTestimonials().then((res) => {
+    services.getTestimonials().then((res) => {
       setTestimonial(res);
     });
   }, []);
@@ -47,7 +49,7 @@ const Testimonial = () => {
                 <div className="TestProfile">
                   <div className="TestProfileImg">
                     <img
-                      src={`http://localhost:1337${
+                      src={`${constants.imageURLConstent}${
                         testimonialContent.data
                           ? testimonialContent.data[1].attributes.image.data
                               .attributes.url
@@ -97,7 +99,7 @@ const Testimonial = () => {
                 <div className="TestProfile">
                   <div className="TestProfileImg">
                     <img
-                      src={`http://localhost:1337${
+                      src={`${constants.imageURLConstent}${
                         testimonialContent.data
                           ? testimonialContent.data[0].attributes.image.data
                               .attributes.url

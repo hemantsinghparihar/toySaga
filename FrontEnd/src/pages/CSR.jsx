@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 // import InstitutionCSR from "../services/instituteCSR";
-import institutionAndCSR from "../services/instituteCSR";
+//import institutionAndCSR from "../services/instituteCSR";
+import services from "../services/services";
 //import download from "../assets/images/Download.png";
-import { useForm } from "react-hook-form";
+//import { useForm } from "react-hook-form";
 import Form from "../components/ui/Form";
 import PageTop from "../components/ui/PageTop";
+import constants from "../utils/constants";
 
 function CSR() {
   const [csr, setCSR] = useState({});
@@ -15,19 +17,12 @@ function CSR() {
     document.title = "ToySaga || CSR";
   }, []);
   useEffect(() => {
-    institutionAndCSR.getInstitutionCSR().then((res) => {
+    services.getInstitutionCSR().then((res) => {
       setCSR(res);
     });
   }, []);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+ 
   return (
     <main className="Institution-page">
         <PageTop pageTitle={"CSR"}/>
@@ -103,7 +98,7 @@ function CSR() {
                     <span className="DownloadPdfIcon">
                       {/* <img src={download} alt=""/> */}
                       <img
-                        src={`http://localhost:1337${
+                        src={`${constants.imageURLConstent}${
                           csr.data
                             ? csr.data[0].attributes.image.data[0].attributes
                                 .url

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+//import { useForm } from "react-hook-form";
 //import Content from "../../services/collabService";
-import contentData from "../../services/collabService";
+//import contentData from "../../services/collabService";
+import services from "../../services/services";
 import Form from "./Form";
 
 function SingleContent(props) {
@@ -45,20 +46,12 @@ function CollabContent(props) {
   const [content, setContent] = useState({});
 
   useEffect(() => {
-    contentData.getCollabContent().then((res) => {
+    services.getCollabContent().then((res) => {
       setContent(res);
     });
   }, []);
 
-  //  const form=useForm()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+ 
   return (
     <div>
       {activeLink === 1 && (

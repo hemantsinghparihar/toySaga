@@ -11,6 +11,8 @@ import AdsSlider from "../components/ui/AdsSlider";
 import AbstractLogoCarousel from "../components/ui/AbstractLogoCarousel";
 import Testimonial from "../components/ui/Testimonial";
 import { Link, NavLink } from "react-router-dom";
+import constants from "../utils/constants";
+
 const Home = () => {
   // const [image, setImage] = useState(null);
   const [top, setTop] = useState({});
@@ -139,7 +141,7 @@ const Home = () => {
           <div className="section">
             {/* <AdsSlider image={banner} imageStyles={{height:'72vh', width:'100%'}}/> */}
             <AdsSlider
-              image={`http://localhost:1337${
+              image={`${constants.imageURLConstent}${
                 top.data
                   ? top.data[0].attributes.bannerImg.data[0].attributes.url
                   : "loading"
@@ -165,7 +167,7 @@ const Home = () => {
                   <div className="video-img">
                     {/* <img src={banner} alt="" className="img-fluid" /> */}
                     <img
-                      src={`http://localhost:1337${
+                      src={`${constants.imageURLConstent}${
                         videoSec.data
                           ? videoSec.data[0].attributes.bannerImage.data
                               .attributes.url
@@ -249,7 +251,7 @@ const Home = () => {
                       <div className="owl-slider-tabs">
                         <a className="one custom-dot active" href="#one">
                           <img
-                            src={`http://localhost:1337${
+                            src={`${constants.imageURLConstent}${
                               testimonialImage.data
                                 ? testimonialImage.data[0].attributes.toysaga
                                     .data.attributes.url
@@ -261,7 +263,7 @@ const Home = () => {
                         <a className="two custom-dot" href="#two">
                           {" "}
                           <img
-                            src={`http://localhost:1337${
+                            src={`${constants.imageURLConstent}${
                               testimonialImage.data
                                 ? testimonialImage.data[0].attributes
                                     .bannerImage.data.attributes.url
@@ -273,7 +275,7 @@ const Home = () => {
                         <a className="three custom-dot" href="#three">
                           {" "}
                           <img
-                            src={`http://localhost:1337${
+                            src={`${constants.imageURLConstent}${
                               testimonialImage.data
                                 ? testimonialImage.data[0].attributes
                                     .abstractLogo.data.attributes.url

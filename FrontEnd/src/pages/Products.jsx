@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 // import productService from "../services/productService";
-import productService from "../services/productService"
+//import productService from "../services/productService"
+import services from "../services/services";
 import Product from "../components/ui/SingleProduct";
 
 function Products() {
@@ -16,7 +17,7 @@ function Products() {
     document.title = "ToySaga || Products";
   }, []);
   useEffect(() => {
-    productService.getProducts().then((res) => {
+    services.getProducts().then((res) => {
       setProducts(res);
     });
   }, []);
