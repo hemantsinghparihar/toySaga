@@ -1,6 +1,8 @@
 import React from "react";
 import '../../App.css'
 import {useForm} from 'react-hook-form'
+import axios from 'axios';
+import services from "../../services/services";
 
 function Form(props) {
     const formAction=props.action
@@ -12,13 +14,26 @@ console.log('✌️formAction --->', formAction);
         reset,
         formState: { errors },
       } = useForm();
-      const onSubmit = (data) => {
-        console.log(data);
-        reset();
+      const onSubmit = async(data) => {
+
+        try {
+          console.log("inside the try block of posting data")
+          // const response = await axios.post(formAction, data); // Send POST request using Axios
+          // console.log('Response:', response.data);
+          services.postFormData(formAction,data).then((res)=>{
+            console.log('posted data to backend , hurrreeeeeee')
+          })
+          console.log('✌️data --->', data);
+          reset(); // Reset the form
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          
+        }
       };
   return (
     <div className="Collaborate-form">
-      <form action={`"${formAction}"`} onSubmit={handleSubmit(onSubmit)}>
+      {/* <form action={`"${formAction}"`} method="post" onSubmit={handleSubmit(onSubmit)}> */}
+      <form   onSubmit={handleSubmit(onSubmit)}>
         <div className="form-title">
           <h5>Fill the form</h5>
         </div>

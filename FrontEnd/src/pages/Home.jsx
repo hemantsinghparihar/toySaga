@@ -14,31 +14,37 @@ import { Link, NavLink } from "react-router-dom";
 import constants from "../utils/constants";
 
 const Home = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const handleDotClick = (index) => {
+    setSelectedIndex(index);
+  };
   // const [image, setImage] = useState(null);
   const [top, setTop] = useState({});
   console.log("✌️top --->", top);
-  top.data
-    ? top.data[0].attributes.bannerImg.data[0].attributes.url
-    : "loading";
-  console.log(
-    '✌️top.data?top.data[0].attributes.bannerImg.data[0].attributes.url:"loading" --->',
-    top.data
-      ? top.data[0].attributes.bannerImg.data[0].attributes.url
-      : "loading"
-  );
+  // top.data
+  //   ? top.data[0].attributes.bannerImg.data[0].attributes.url
+  //   : "loading";
+  // console.log(
+  //   '✌️top.data?top.data[0].attributes.bannerImg.data[0].attributes.url:"loading" --->',
+  //   top.data
+  //     ? top.data[0].attributes.bannerImg.data[0].attributes.url
+  //     : "loading"
+  // );
 
   const [videoSec, setVideoSec] = useState({});
 
   console.log("✌️setVideoSec --->", videoSec);
   console.log("✌️videoSec --->", videoSec);
-  console.log(
-    "videoSec image",
-    videoSec.data
-      ? videoSec.data[0].attributes.bannerImage.data.attributes.url
-      : "loading"
-  );
+  // console.log(
+  //   "videoSec image",
+  //   videoSec.data
+  //     ? videoSec.data[0].attributes.bannerImage.data.attributes.url
+  //     : "loading"
+  // );
 
   const [testimonialImage, setTestimonialImage] = useState({});
+console.log('✌️testimonialImage --->', testimonialImage);
 
   const OPTIONS = { dragFree: true, containScroll: "trimSnaps" };
   const SLIDE_COUNT = 16;
@@ -51,9 +57,9 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    images.getAllImages().then((res) => {
-      setImage(res);
-    });
+    // images.getAllImages().then((res) => {
+    //   setImage(res);
+    // });
     homeAPI.getTopHome().then((res) => {
       setTop(res);
     });
@@ -62,7 +68,7 @@ const Home = () => {
       setVideoSec(res);
     });
 
-    homeAPI.getTestimonialImages().then((res) => {
+    homeAPI.getTestimonial().then((res) => {
       setTestimonialImage(res);
     });
   }, []);
@@ -143,17 +149,17 @@ const Home = () => {
             <AdsSlider
               image={`${constants.imageURLConstent}${
                 top.data
-                  ? top.data[0].attributes.bannerImg.data[0].attributes.url
+                  ? top.data.SliderDetails[0].ImageUrl
                   : "loading"
               }`}
-              imageStyles={{ height: "72vh", width: "100%" }}
+              // imageStyles={{ height: "72vh", width: "100%" }}
             />
 
             <section className="about-sec">
               <div className="container">
                 <p className="text-center">
                   {top.data
-                    ? top.data[0].attributes.description[0].children[0].text
+                    ? top.data.About.description
                     : "loading"}
                 </p>
               </div>
@@ -169,8 +175,7 @@ const Home = () => {
                     <img
                       src={`${constants.imageURLConstent}${
                         videoSec.data
-                          ? videoSec.data[0].attributes.bannerImage.data
-                              .attributes.url
+                          ? videoSec.data.VideoSectionDetails[0].ImageUrl
                           : "loading"
                       }`}
                       alt=""
@@ -186,29 +191,29 @@ const Home = () => {
                   <div className="video-Content">
                     <h2 style={{ textAlign: "center" }}>
                       {videoSec.data
-                        ? videoSec.data[0].attributes.heading
+                        ? videoSec.data.VideoSectionDetails[0].Title
                         : "loading"}
                     </h2>
                     <h4>
                       {videoSec.data
-                        ? videoSec.data[0].attributes.heading2
+                        ? videoSec.data.VideoSectionDetails[0].Heading
                         : "loading"}
                     </h4>
                     <h6>
                       {videoSec.data
-                        ? videoSec.data[0].attributes.boldText[0].children[0]
-                            .text
+                        ? videoSec.data.VideoSectionDetails[0].Description1
+                            
                         : "loading"}
                     </h6>
                     <p>
                       {videoSec.data
-                        ? videoSec.data[0].attributes.normalText[0].children[0]
-                            .text
+                        ? videoSec.data.VideoSectionDetails[0].Description2
+                            
                         : "loading"}
                     </p>
                     <button className="radiusBtn">
                       {videoSec.data
-                        ? videoSec.data[0].attributes.buttonText
+                        ? videoSec.data.VideoSectionDetails[0].ButtonName
                         : "loading"}
                     </button>
                   </div>
@@ -223,8 +228,74 @@ const Home = () => {
               </div>
             </section>
           </div>
-
+          
           <div className="section">
+      <section className="Testimonial">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12 col-md-6">
+              <div className="title">
+                <h2>Testimonials</h2>
+              </div>
+              <Testimonial selectedIndex={selectedIndex} />
+            </div>
+            <div className="col-sm-12 col-md-6">
+              <div className="dots-assets">
+                <div className="line"></div>
+                <div className="orangeSquare"></div>
+                <div className="owl-slider-tabs">
+                  <a
+                    className="one custom-dot active"
+                    href="#one"
+                    onClick={() => handleDotClick(0)}
+                  >
+                    <img
+                      src={`${constants.imageURLConstent}${
+                        testimonialImage.data
+                          ? testimonialImage.data.TestimonialDetails[0].ProfileImage
+                          : "loading"
+                      }`}
+                      alt=""
+                    />
+                  </a>
+                  <a
+                    className="two custom-dot"
+                    href="#two"
+                    onClick={() => handleDotClick(1)}
+                  >
+                    <img
+                      src={`${constants.imageURLConstent}${
+                        testimonialImage.data
+                          ? testimonialImage.data.TestimonialDetails[1].ProfileImage
+                          : "loading"
+                      }`}
+                      alt=""
+                    />
+                  </a>
+                  <a
+                    className="three custom-dot"
+                    href="#three"
+                    onClick={() => handleDotClick(2)}
+                  >
+                    <img
+                      src={`${constants.imageURLConstent}${
+                        testimonialImage.data
+                          ? testimonialImage.data.TestimonialDetails[1].ProfileImage
+                          : "loading"
+                      }`}
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+          {/* <div className="section">
             <section className="Testimonial">
               <div className="container">
                 <div className="row">
@@ -290,7 +361,7 @@ const Home = () => {
                 </div>
               </div>
             </section>
-          </div>
+          </div> */}
 
           <div className="section">
             <div className="footerwrapper">

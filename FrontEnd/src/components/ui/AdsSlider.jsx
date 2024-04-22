@@ -28,14 +28,14 @@ const AdsSlider = (props) => {
             className="embla_slide"
             style={{ flex: "0 0 100%", minWidth: "0" }}
           >
-            <img style={imageStyles} src={image} alt="" />
+            <img className="image_banner" style={imageStyles} src={image} alt="" />
           </div>
 
           <div
             className="embla_slide"
             style={{ flex: "0 0 100%", minWidth: "0" }}
           >
-            <img style={imageStyles} src={image} alt="" />
+            <img className="image_banner" style={imageStyles} src={image} alt="" />
           </div>
 
           {/* <div className='embla_slide' style={{ flex: '0 0 100%',minWidth: '0'}}>

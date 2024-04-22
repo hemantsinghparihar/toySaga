@@ -1,4 +1,4 @@
- const imageURLConstent="http://localhost:1337"
+ const imageURLConstent="http://13.201.30.241"
 
  const constants={
     imageURLConstent,

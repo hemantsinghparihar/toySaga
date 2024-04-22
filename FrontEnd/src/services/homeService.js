@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'http://localhost:1337/api', 
+  baseURL: 'http://13.201.30.241/auth', 
   timeout: 5000, 
   headers: {
     'Content-Type': 'application/json', // Set default headers for all requests
@@ -14,10 +14,10 @@ const fetchData=async(endpoint)=>{
 }
 
 const homeAPI = {
-  getTopHome:()=>fetchData("/homes?populate=*"),
-  getVideoSecHome: ()=>fetchData("/home-video-secs?populate=*"),
-  getLogoCarousel: ()=>fetchData("/logo-carousels?populate=*"),
-  getTestimonialImages: ()=>fetchData("/testimonial-images?populate=*"),
+  getTopHome:()=>fetchData("/home-page/api/slider"),
+  getVideoSecHome: ()=>fetchData("/home-page/api/video-section"),
+  getLogoCarousel: ()=>fetchData("/home-page/api/logo-section"),
+  getTestimonial: ()=>fetchData("/home-page/api/testimonial"),
 };
 
 export default homeAPI;

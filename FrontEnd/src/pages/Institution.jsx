@@ -17,7 +17,7 @@ function Institution() {
     document.title = "ToySaga || Institution";
   }, []);
   useEffect(() => {
-    services.getInstitutionCSR().then((res) => {
+    services.getInstitution().then((res) => {
       setInstitute(res);
     });
   }, []);
@@ -98,8 +98,7 @@ function Institution() {
                         <img
                           src={`${constants.imageURLConstent}${
                             institute.data
-                              ? institute.data[0].attributes.image.data[0]
-                                  .attributes.url
+                              ? institute.data.InstitutionDetails.Image
                               : "loading"
                           }`}
                           alt=""
@@ -108,12 +107,12 @@ function Institution() {
 
                       <h5>
                         {institute.data
-                          ? institute.data[0].attributes.heading
+                          ? institute.data.InstitutionDetails.Title
                           : ""}
                       </h5>
                       <p>
                         {institute.data
-                          ? institute.data[0].attributes.text
+                          ? institute.data.InstitutionDetails.Description
                           : ""}
                       </p>
                     

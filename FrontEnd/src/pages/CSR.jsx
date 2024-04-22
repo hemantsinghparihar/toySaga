@@ -17,7 +17,7 @@ function CSR() {
     document.title = "ToySaga || CSR";
   }, []);
   useEffect(() => {
-    services.getInstitutionCSR().then((res) => {
+    services.getCSR().then((res) => {
       setCSR(res);
     });
   }, []);
@@ -90,7 +90,7 @@ function CSR() {
                     <button className="radiusBtn fillBtn">Submit Now</button>
                   </form>
                 </div> */}
-                <Form action={"#"} />
+                <Form action={"/home-website/csr/data "} />
               </div>
               <div className="col-sm-12 col-md-6">
                 <div className="DownloadPdf">
@@ -100,15 +100,14 @@ function CSR() {
                       <img
                         src={`${constants.imageURLConstent}${
                           csr.data
-                            ? csr.data[0].attributes.image.data[0].attributes
-                                .url
+                            ? csr.data.CSRDetails.Image
                             : "loading"
                         }`}
                         alt=""
                       />
                     </span>
-                    <h5>{csr.data ? csr.data[0].attributes.heading : ""}</h5>
-                    <p>{csr.data ? csr.data[0].attributes.text : ""}</p>
+                    <h5>{csr.data ? csr.data.CSRDetails.Title : ""}</h5>
+                    <p>{csr.data ? csr.data.CSRDetails.Description : ""}</p>
                    
                   </div>
 

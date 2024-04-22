@@ -9,17 +9,17 @@ const AbstractLogoCarousel = (props) => {
   const { slides, options } = props;
   const [imageData, setImagesData] = useState({});
   console.log("✌️imageData --->", imageData);
-  const image = `http://localhost:1337${
+  const image = `http://13.201.30.241${
     imageData.data
-      ? imageData.data[0].attributes.abstractLogo.data[0].attributes.url
+      ? imageData.data.LogoDetails[0].ImageUrl
       : "loading"
   }`;
-  console.log(
-    "✌️imageData.data?imageData.data[",
-    imageData.data
-      ? imageData.data[0].attributes.abstractLogo.data[0].attributes.url
-      : "loading"
-  );
+  // console.log(
+  //   "✌️imageData.data?imageData.data[",
+  //   imageData.data
+  //     ? imageData.data[0].attributes.abstractLogo.data[0].attributes.url
+  //     : "loading"
+  // );
 
   const images = [image, image, image, image];
 

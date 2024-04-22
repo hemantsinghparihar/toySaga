@@ -14,7 +14,10 @@ body {
   /* overflow: hidden;  */
   overscroll-behavior: none;
 }
-
+/* .home-page section.videoSec {
+  margin-top: -80px ;
+  
+} */
 #fullpage .section {
   padding-top: 9.7vh;
 }
@@ -34,6 +37,199 @@ body {
   bottom: 0;
   width: 100vw;
 }
+.image_banner{
+  height: 72vh;
+  width: 100%; 
+  
+}
+
+/* ========= ======================================*/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  /* border: 3px solid rgb(245, 119, 8); */
+}
+
+.modal-content {
+  background: white;
+  width: 75vw;
+  height: 75vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  /* overflow: hidden; */
+  /* border: 3px solid rgb(238, 10, 10); */
+}
+
+.modal-image {
+  width: 50%;
+  
+  /* background: #f4f4f4; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 3px solid rgb(7, 229, 100); */
+  
+}
+
+
+/* .modal-image img {
+  width: 100%; 
+  height: auto; 
+  
+} */
+.modal-image img {
+  max-width: 100%;
+  max-height: 100%;
+  /* border: 3px solid rgb(23, 0, 116); */
+  
+}
+
+.modal-details {
+  width: 60%;
+  padding: 20px;
+  overflow: auto;
+  /* border: 3px solid black; */
+}
+
+.modal-details h1, .modal-details p {
+  margin: 10px 0;
+}
+
+/* .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  
+} */
+
+.modal-body {
+  /* border: 3px solid black; */
+  display: flex;
+  height: 100%;
+}
+/* ========================================== */
+
+.parent-main-product-card{
+  border: 2px solid rgb(111, 254, 111);
+  height: 500px;
+}
+.main-product-card{
+  border: 2px solid red;
+  height: 60vh;
+  width: 60vw;
+}
+.rowProduct{
+  border: 2px solid black;
+  display: flex;
+ 
+}
+
+.left-product{
+  border: 2px solid black;
+}
+
+.right-product{
+  border: 2px solid black;
+}
+
+
+/* .testimonial-wrapper {
+  overflow: hidden;
+} */
+
+.embla1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.embla_container {
+  display: flex;
+  will-change: transform;
+}
+
+.embla_slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.TestimonialItem {
+  padding: 20px;
+  /* background-color: #f5f5f5; */
+  border-radius: 8px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.TestimonialContent {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.TestimonialContent p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.TestProfile {
+  display: flex;
+  align-items: center;
+}
+
+.TestProfileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.TestProfileImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.TestNameWrapper p {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.TestNameWrapper span {
+  font-size: 14px;
+  color: #666;
+}
+
+.quate {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+}
+
+.quate img {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
 /* .home-page  .footerwrapper{
   height: 100vh; */
 /* height: 86vh; */
@@ -187,7 +383,7 @@ a {
 }
 
 .about-sec {
-  padding: 20px 0px;
+  padding: 10px 0px;
   background-color: #0059ab;
 }
 
@@ -1015,6 +1211,173 @@ form {
   .About-page .CardWrapper.ltrSec .row {
     flex-direction: column !important;
   }
+
+  .ltrSec .Card-box {
+    padding: 0px !important;
+  }
+
+  .footerlinkWrapper {
+    grid-gap: 20px;
+  }
+  html {
+    height: 100%;
+   
+  }
+ 
+  .video-Content {
+    padding: 8px 10px;
+    
+  }
+  .video-img {
+    height: 100%;
+    position: relative;
+  }
+  
+  .video-img img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-Content h2 {
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+  }
+  
+  .video-Content h4 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #0059ab;
+  }
+  
+  .video-Content h6 {
+    margin-bottom: 10px;
+    line-height: 18px;
+    font-weight: 600;
+  }
+  
+  .video-Content p {
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #868686;
+  }
+ 
+  /* .home-page .section {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  } */
+  .home-page .section {
+    height: 100vh;
+  
+  }
+  .home-page .footerwrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+  }
+  .section .Testimonial{
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+  .Testimonial {
+    padding: 100px 0px 280px;
+  }
+  .image_banner{
+    
+   height: 100%;
+    margin-top: 1px; 
+    
+}
+
+.owl-slider-tabs {
+  display: flex;
+ flex-direction: row;
+}
+.custom-dot img {
+  min-height: 80px;
+  object-fit: cover;
+  border-radius: 100px;
+  max-width: 80px;
+  min-width: 80px;
+}
+.home-page div#fullpage {
+  margin-top: 0px;
+}
+.home-page section.videoSec {
+  margin-top: -90px !important;
+  
+}
+/* .video-Content {
+  padding: 20px 40px;
+} */
+
+
+/* .video-Content h4 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #0059ab;
+}
+
+.video-Content h6 {
+  margin-bottom: 20px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.video-Content p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 26px;
+  color: #868686;
+} */
+  
+}
+/* @media (max-width: 767px) {
+  .Collaborate-page ul.nav.nav-tabs.justify-content-center {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 25px;
+  }
+
+  .Collaborate-form form {
+    padding: 20px;
+    box-shadow: 0px 0px;
+    border: 1px solid #f4f4f4;
+  }
+
+  .Collaborate-form {
+    margin: 20px 0px 0px;
+  }
+
+  .Products-page .CardWrapper .col-sm-12.col-md-8 .col-sm-12.col-md-5 {
+    margin-bottom: 20px;
+  }
+
+  .Products-page .rtlBtn {
+    margin: 20px 0px 0px;
+  }
+
+  .Products-page .rtlBtn button.fillBtn.radiusBtn {
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .Card-box {
+    padding: 0px;
+    margin: 30px 0px 0px;
+  }
+
+  .About-page .CardWrapper .row {
+    flex-direction: column-reverse;
+  }
+
+  .About-page .CardWrapper.ltrSec .row {
+    flex-direction: column !important;
+  }
   .ltrSec .Card-box {
     padding: 0px !important;
   }
@@ -1051,6 +1414,7 @@ form {
   }
   .home-page .banneritem {
     height: auto;
+   
   }
 
   .home-page .section.fp-section {
@@ -1064,4 +1428,17 @@ form {
   .home-page .footerWrapper {
     height: auto;
   }
-}
+  
+  .Testimonial h2 {
+    font-size: 26px;
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 90px;
+  }
+  
+  .Testimonial {
+    padding: 180px 30px 280px;
+  }
+
+  
+} */

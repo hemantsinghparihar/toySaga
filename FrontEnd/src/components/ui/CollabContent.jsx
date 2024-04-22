@@ -7,30 +7,24 @@ import Form from "./Form";
 
 function SingleContent(props) {
   const content=props.content;
-  const item=props.item
+  // const item=props.item
+  const details=props.details
   return (
     <div className="tab-pane active" role="tabpanel">
       <div className="row">
         <div className="col-sm-12 col-md-6 col-lg-7">
           <div className="Collaborate-content">
-            <h2>
-              {content.data ? content.data[item].attributes.heading : "loading"}
-            </h2>
-            <p className="cardDesc">
-              {content.data
-                ? content.data[item].attributes.boldText[0].children[0].text
-                : "loading"}
-            </p>
-            <p className="small-desc">
-              {content.data
-                ? content.data[item].attributes.smallText[0].children[0].text
-                : "loading"}
-            </p>
-            <p className="normal-Desc">
-              {content.data
-                ? content.data[item].attributes.normalText[0].children[0].text
-                : "loading"}
-            </p>
+          {content.data && content.data[details] ? (
+              <>
+                <h2>{content.data[details].Title}</h2>
+                <p className="cardDesc">{content.data[details].Description1}</p>
+                <p className="small-desc">{content.data[details].Description2}</p>
+                <p className="normal-Desc">{content.data[details].Description3}</p>
+              </>
+            ) : (
+              <div>Loading...</div>
+            )}
+           
           </div>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-5">
@@ -43,11 +37,22 @@ function SingleContent(props) {
 
 function CollabContent(props) {
   const activeLink = props.activeLink;
-  const [content, setContent] = useState({});
+  const [contentSuppliers, setContentSupliers] = useState({});
+console.log('✌️content --->', contentSuppliers);
+const [contentDistributer, setContentDistributer] = useState({});
+
+const [contentSuperstockist, setContentSuperstockist] = useState({});
 
   useEffect(() => {
-    services.getCollabContent().then((res) => {
-      setContent(res);
+    //changes-----------
+    services.getCollabContentSuppliers().then((res) => {
+      setContentSupliers(res);
+    });
+    services.getCollabContentDistributers().then((res) => {
+      setContentDistributer(res);
+    });
+    services.getCollabContentSuperstokists().then((res) => {
+      setContentSuperstockist(res);
     });
   }, []);
 
@@ -56,16 +61,16 @@ function CollabContent(props) {
     <div>
       {activeLink === 1 && (
         // id="Suppliers"
-        <SingleContent content={content} item={2}/>
+        <SingleContent content={contentSuppliers}  details={'SuppliersDetails'}/>
       )}
 
       {activeLink === 2 && (
-        <SingleContent content={content} item={0}/>
+        <SingleContent content={contentDistributer}  details={'DistributersDetails'}/>
       )}
 
       {activeLink === 3 && (
         //id="SuperStockists"
-        <SingleContent content={content} item={1}/>
+        <SingleContent content={contentSuperstockist}  details={'SuperStokistsDetails'}/>
       )}
     </div>
   );

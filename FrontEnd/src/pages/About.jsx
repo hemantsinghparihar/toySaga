@@ -15,18 +15,22 @@ import constants from "../utils/constants";
 
 function About() {
   const [aboutData, setAboutData] = useState({});
-
   console.log("✌️aboutData --->", aboutData);
 
   console.log("✌️aboutData.data --->", aboutData?.data);
 
+  const [partnersData, setPartnersData] = useState({})
+console.log('✌️partnersData --->', partnersData);
+
+  
+
   //console.log('✌️aboutData[0] --->', aboutData.data[0].attributes.heading);
-  console.log(
-    "✌️aboutData.data[0].attributes.image.url --->",
-    aboutData.data
-      ? aboutData.data[0].attributes.image.data.attributes.url
-      : "loading"
-  );
+  // console.log(
+  //   "✌️aboutData.data[0].attributes.image.url --->",
+  //   aboutData.data
+  //     ? aboutData.data[0].attributes.image.data.attributes.url
+  //     : "loading"
+  // );
 
   useEffect(() => {
     const element = document.getElementById("header");
@@ -38,16 +42,20 @@ function About() {
     services.getAboutSec().then((res) => {
       setAboutData(res);
     });
+    services.getPartners().then((res)=>{
+      setPartnersData(res);
+    })
   }, []);
+  
   return (
     <main className="About-page">
       <PageTop pageTitle={"About Us"}/>
 
       <AboutCards aboutData={aboutData} item={0} img={"right"}/>
 
-      <AboutCards aboutData={aboutData} item={2} img={"left"}/>
+      <AboutCards aboutData={aboutData} item={1} img={"left"}/>
 <br/><br /><br />
-      <AboutCards aboutData={aboutData} item={3} img={"right"}/>
+      <AboutCards aboutData={aboutData} item={2} img={"right"}/>
 
       <section className="creativePartners same-space">
         <div className="container">
@@ -67,9 +75,8 @@ function About() {
                   /> */}
                    <img
                     src={`${constants.imageURLConstent}${
-                      aboutData.data
-                        ? aboutData.data[1].attributes.image2.data.attributes
-                            .url
+                      partnersData.data
+                        ? partnersData.data.PartnersDetails.Image1
                         : "vision image"
                     }`}
                     alt=""
@@ -83,8 +90,7 @@ function About() {
                   {/* <img src={samWilliamsons} alt=""/> */}
                   <img
                     src={`${constants.imageURLConstent}${
-                      aboutData.data
-                        ? aboutData.data[1].attributes.image.data.attributes.url
+                      partnersData.data? partnersData.data.PartnersDetails.Image2
                         : "vision image"
                     }`}
                     alt=""
@@ -99,13 +105,13 @@ function About() {
             <div className="col-sm-12 col-md-6">
               <div className="contentPartners">
                 {/* <h2>Creative Partners</h2> */}
-                {aboutData.data && (
-                  <h4>{aboutData.data[1].attributes.heading}</h4>
+                {partnersData.data && (
+                  <h4>{partnersData.data.PartnersDetails.Title}</h4>
                 )}
                 <p className="normal-Desc">
-                  {aboutData.data
-                    ? aboutData.data[1].attributes.normalText
-                    : "loading"}
+                {partnersData.data && partnersData.data.PartnersDetails
+                  ? partnersData.data.PartnersDetails.description
+                     : "loading"}
                 </p>
                
               </div>

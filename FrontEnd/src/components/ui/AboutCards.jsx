@@ -15,20 +15,20 @@ function AboutCards(props) {
                   {/* <h4>Mission</h4> */}
                   {/* <h4>{aboutData?.data[0]?.attributes?.heading}</h4> */}
                   {aboutData.data && (
-                    <h4>{aboutData.data[item].attributes.heading}</h4>
+                    <h4>{aboutData.data.AboutUsDetails[item].Title}</h4>
                   )}
                   {/* <p className="cardDesc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                               diam nonumy eirmod tempor invidunt ut labore et dolore
                               magna aliquyam erat, sed diam voluptua. At vero eos et</p> */}
                   <p className="cardDesc">
                     {aboutData.data
-                      ? aboutData.data[item].attributes.boldText
+                      ? aboutData.data.AboutUsDetails[item].Description1                      
                       : "loading"}
                   </p>
                   {/* <p className="small-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>- */}
                   <p className="small-desc">
                     {aboutData.data
-                      ? aboutData.data[item].attributes.smallText
+                      ? aboutData.data.AboutUsDetails[item].Description2
                       : "loading"}
                   </p>
                   -
@@ -40,7 +40,7 @@ function AboutCards(props) {
                                  </p> */}
                   <p className="normal-Desc">
                     {aboutData.data
-                      ? aboutData.data[item].attributes.normalText
+                      ? aboutData.data.AboutUsDetails[item].Description3
                       : "loading"}
                   </p>
                 </div>
@@ -50,7 +50,8 @@ function AboutCards(props) {
                   {/* <img src={mission} alt=""/> */}
                   {aboutData.data && (
                     <img
-                      src={`http://localhost:1337${aboutData.data[item].attributes.image.data.attributes.url}`}
+                      src={`http://13.201.30.241${aboutData.data.AboutUsDetails[item].ImageUrl
+                      }`}
                       alt="mission"
                     />
                   )}
@@ -73,9 +74,9 @@ function AboutCards(props) {
                 <div className="Card-img">
                   {/* <img src={vission} alt=""/> */}
                   <img
-                    src={`http://localhost:1337${
+                    src={`http://13.201.30.241${
                       aboutData.data
-                        ? aboutData.data[item].attributes.image.data.attributes.url
+                        ? aboutData.data.AboutUsDetails[item].ImageUrl
                         : "vission image"
                     }`}
                     alt=""
@@ -86,22 +87,22 @@ function AboutCards(props) {
                 <div className="Card-box">
                   {/* <h4>Vision</h4> */}
                   {aboutData.data && (
-                    <h4>{aboutData.data[item].attributes.heading}</h4>
+                    <h4>{aboutData.data.AboutUsDetails[item].Title}</h4>
                   )}
                   <p className="cardDesc">
                     {aboutData.data
-                      ? aboutData.data[item].attributes.boldText
+                      ? aboutData.data.AboutUsDetails[item].Description1
                       : "loading"}
                   </p>
                   <p className="small-desc">
                     {aboutData.data
-                      ? aboutData.data[item].attributes.smallText
+                      ? aboutData.data.AboutUsDetails[item].Description2
                       : "loading"}
                   </p>
                   -
                   <p className="normal-Desc">
                     {aboutData.data
-                      ? aboutData.data[item].attributes.normalText
+                      ? aboutData.data.AboutUsDetails[item].Description3
                       : "loading"}
                   </p>
                  

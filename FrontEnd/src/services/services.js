@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:1337/api',
+  baseURL: 'http://13.201.30.241/auth',
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
@@ -19,15 +19,66 @@ const fetchData = async (endpoint) => {
   }
 };
 
+const postData = async (endpoint, data) => {
+  try {
+    const response = await instance.post(endpoint, data);
+    return response.data;
+  } catch (error) {
+    console.error(`Error posting data to , lets configure------- ${endpoint}:`, error);
+    throw error;
+  }
+};
+
 const services = {
-  getAboutSec: () => fetchData('/about-models?populate=*'),
-  getCollabContent: () => fetchData('/collaborates'),
-  getInstitutionCSR: () => fetchData('/institution-csrs?populate=*'),
+  getAboutSec: () => fetchData('/about/api/about-us'),
+  getPartners:()=>fetchData('/about/api/partners'),
+
+  getCollabContentSuppliers: () => fetchData('/collaborate/api/suppliers'),
+  getCollabContentDistributers: () => fetchData('/collaborate/api/distributers'),
+  getCollabContentSuperstokists: () => fetchData('/collaborate/api/superstokists'),
+
+  getInstitution: () => fetchData('/data/api/institution'),
+  getCSR: () => fetchData('/data/api/csr'),
   getTestimonials: () => fetchData('/testimonials?populate=*'),
-  getProducts: () => fetchData('/products?populate=*'),
+  getProducts: () => fetchData('/product/api/products'),
+
+  postFormData:(endpoint,data)=>postData(endpoint,data)
 };
 
 export default services;
+
+
+
+// import axios from 'axios';
+
+// const instance = axios.create({
+//   baseURL: 'http://localhost:1337/api',
+//   timeout: 5000,
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
+
+// const fetchData = async (endpoint) => {
+//   try {
+//     const response = await instance.get(endpoint);
+//     return response.data;
+//   } catch (error) {
+//     // Handle error
+//     console.error(`Error fetching data from ${endpoint}:`, error);
+//     throw error;
+//   }
+// };
+
+// const services = {
+//   getAboutSec: () => fetchData('/about-models?populate=*'),
+//   getCollabContent: () => fetchData('/collaborates'),
+//   getInstitutionCSR: () => fetchData('/institution-csrs?populate=*'),
+//   getTestimonials: () => fetchData('/testimonials?populate=*'),
+//   getProducts: () => fetchData('/products?populate=*'),
+// };
+
+// export default services;
 
 
 // import axios from 'axios'
